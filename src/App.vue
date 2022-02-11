@@ -1,7 +1,13 @@
 <template>
-  <v-app>
-  <navbar />
-</v-app>
+<div class="app">
+  <template v-if="is404">
+    <router-view></router-view>
+  </template>
+
+  <v-app v-else>
+    <navbar />
+  </v-app>
+</div>
 </template>
 
 <script>
@@ -16,6 +22,11 @@ export default {
   data: () => ({
     //
   }),
+  computed: {
+    is404() {
+      return this.$route.name === '404'
+    }
+  }
 };
 </script>
 

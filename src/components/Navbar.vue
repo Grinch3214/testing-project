@@ -27,12 +27,14 @@
     flat
     tile
   >
-    <v-toolbar color="blue accent-2">
+    <v-app-bar color="blue accent-2" app>
       <v-app-bar-nav-icon @click="openNav = true" color="white" class="d-flex d-md-none"></v-app-bar-nav-icon>
 
-      <v-toolbar-title class="pl-0">
-        <v-btn plain color="white" to="/">My Blog</v-btn>
-      </v-toolbar-title>
+    <v-app-bar-title>
+        <router-link class="text-h5 d-block mt-2 white--text" style="max-width: 45px" to="/">
+          <img style="width: 100%" src="~@/assets/images/logo.svg" alt="">
+        </router-link>
+    </v-app-bar-title>
 
       <v-spacer></v-spacer>
 
@@ -49,11 +51,11 @@
         </v-btn>
       </v-toolbar-items>
 
-    </v-toolbar>
+    </v-app-bar>
   </v-card>
 
     <v-main>
-      <v-container>
+      <v-container style="height: 100%">
         <router-view></router-view>
       </v-container>
     </v-main>
@@ -89,6 +91,9 @@ export default {
   // .v-btn__content {
   // opacity: 1;
   // }
+  .v-main {
+    min-height: 100vh;
+  }
 }
 
 </style>

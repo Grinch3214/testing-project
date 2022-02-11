@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '@/components/Home'
 import SignIn from '@/components/authentication/SignIn'
 import SignUp from '@/components/authentication/SignUp'
+import AboutAutor from '@/components/AboutAutor'
+import NotFound from '@/components/NotFound'
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,16 @@ const routes = [
       path: '/register',
       name: 'register',
       component: SignUp
+    },
+    {
+      path: '/about-autor',
+      name: 'about-autor',
+      component: AboutAutor,
+    },
+    {
+      path: '*',
+      name: '404',
+      component: NotFound,
     }
   ]
   

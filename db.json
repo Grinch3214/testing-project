@@ -205,13 +205,13 @@
     }
   ],
   "adminInfo": {
-    "name": "",
-    "surname": "",
-    "email": "",
-    "phone": "",
-    "gitHubUserName": "",
-    "telegramUserName": "",
-    "linkedinLink": "",
+    "name": "Maxim",
+    "surname": "Hrichina",
+    "email": "scorpiomax90@gmail.com",
+    "phone": "+380937271443",
+    "gitHubUserName": "Grinch3214",
+    "telegramUserName": "@maxgrq",
+    "linkedinLink": "https://www.linkedin.com/in/maxim-grichina-6000a91ab",
     "languages": [
       {
         "name": "English",
@@ -234,7 +234,7 @@
     ]
   },
   "adminCredentials": {
-    "login": "",
-    "password": ""
+    "login": "admin",
+    "password": "12345"
   }
 }

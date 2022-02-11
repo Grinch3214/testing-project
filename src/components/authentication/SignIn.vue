@@ -87,6 +87,7 @@ export default {
 
 <style lang="scss">
 .login-in {
+  height: 100%;
   .v-toolbar__content {
     justify-content: center;
     color: #fff;
