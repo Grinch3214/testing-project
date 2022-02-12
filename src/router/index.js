@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import SignIn from '@/components/authentication/SignIn'
 import SignUp from '@/components/authentication/SignUp'
 import AboutAutor from '@/components/AboutAutor'
+import ArticlePage from '@/components/ArticlePage'
 import NotFound from '@/components/NotFound'
 
 Vue.use(VueRouter)
@@ -28,6 +29,11 @@ const routes = [
       path: '/about-autor',
       name: 'about-autor',
       component: AboutAutor,
+    },
+    {
+      path: '/article-page',
+      name: 'article-page',
+      component: ArticlePage,
     },
     {
       path: '*',
