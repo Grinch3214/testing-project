@@ -18,16 +18,18 @@
     >
       mdi-square-edit-outline
     </v-icon></v-btn>
-      <h3 class="pb-4 pr-14">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore tenetur repellendus quae quo. Nemo, totam culpa! Consectetur mollitia alias, eligendi officiis, quo explicabo asperiores, ducimus ex aperiam perferendis sit ipsa?</h3>
-      <p class="flex-grow-1"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus, nulla eaque omnis sunt doloribus perferendis debitis rem quaerat, itaque magni vel blanditiis, minus nihil excepturi nemo sit temporibus hic alias!</p>
+      <h3 class="py-4 pr-14">{{ itemPost.title }}</h3>
+      <p class="flex-grow-1"> {{ itemPost.body }}</p>
 
       <div class="text-left">
         <v-chip
+          v-for="item in itemPost.lablesList"
+          :key="item"
           color="secondary"
           label
           class="mr-2 mb-2"
         >
-          Text
+          {{ item }}
         </v-chip>
       </div>
     </v-sheet>
@@ -35,8 +37,35 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: "ArticlePage",
+  props: {
+
+  },
+  computed: {
+    ...mapGetters([
+      'statePosts'
+    ]),
+    itemPost() {
+      let result = {}
+      let vm = this
+      this.statePosts.filter((item) => {
+        if (item.id == vm.$route.query.id) {
+          result = item
+        }
+      })
+      return result
+    },
+  },
+  mounted() {
+    console.log(this.$route.query.id)
+    this.getPosts()
+  },
+  methods: {
+    ...mapActions([ 'getPosts' ])
+  }
 };
 </script>
 
