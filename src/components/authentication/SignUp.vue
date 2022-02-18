@@ -122,6 +122,16 @@
             </v-row>
           </v-container>
 
+          <v-alert
+            color="red"
+            icon="mdi-account"
+            type="warning"
+            dense
+            class="my-4 mx-auto"
+            max-width="300"
+            v-if="currentUser"
+          >User with this login exists</v-alert>
+
             <v-btn :disabled="!valid" color="blue accent-2" @click="onSubmit">
               Sign Up
             </v-btn>
@@ -133,11 +143,14 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
+
 export default {
   name: "SignUp",
   data: () => ({
     valid: true,
     show: false,
+    currentUser: null,
 
     birthday: null,
     menu: false,
@@ -190,9 +203,11 @@ export default {
     computedDateFormatted() {
       return this.formatDate(this.birthday);
     },
+    ...mapState(['users']),
   },
 
   methods: {
+    ...mapActions( ['getUsers'] ),
     save (birthday) {
         this.$refs.menu.save(birthday)
     },
@@ -202,21 +217,47 @@ export default {
       const [year, month, day] = birthday.split("-");
       return `${day}/${month}/${year}`;
     },
-    onSubmit() {
-      if (this.$refs.form.validate()) {
-        const user = {
-          login: this.login,
-          password: this.password,
-          name: this.name,
-          surname: this.surname,
-          email: this.email,
-          phone: this.phone,
-          birthday: this.birthday,
-          select: this.select,
-        };
-        console.log(user);
+    async onSubmit() {
+      try {
+        if (this.$refs.form.validate()) {
+
+          for(let i = 0; i < this.users.length; i++) {
+            if (this.login === this.users[i].login) {
+              this.currentUser = this.users[i].login
+              break
+            }
+          }
+
+          if (this.currentUser) {
+            this.login = ''
+            setTimeout(() => this.currentUser = null, 2000)
+          } else {
+            await(await fetch ('http://localhost:3000/users', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+              body: JSON.stringify({
+                login: this.login,
+                password: this.password,
+                name: this.name,
+                surname: this.surname,
+                email: this.email,
+                phone: this.phone,
+                birthday: this.birthday,
+                select: this.select,
+              }),
+            })).json()
+            this.$router.push('/login')
+          }
+        }
+      } catch(e) {
+        console.warn('Error', e)
       }
     },
+  },
+  created() {
+    this.getUsers()
   },
 };
 </script>

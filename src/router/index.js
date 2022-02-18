@@ -9,21 +9,30 @@ import NotFound from '@/components/NotFound'
 
 Vue.use(VueRouter)
 
+function guardRoute (to, from, next) {
+  if(localStorage.getItem('login')) {
+    next()
+  } else {
+    next('/login')
+  }
+}
+
 const routes = [
     {
       path: '',
       name: 'home',
-      component: Home
+      component: Home,
+      beforeEnter: guardRoute,
     },
     {
       path: '/login',
       name: 'login',
-      component: SignIn
+      component: SignIn,
     },
     {
       path: '/register',
       name: 'register',
-      component: SignUp
+      component: SignUp,
     },
     {
       path: '/about-autor',
@@ -34,6 +43,7 @@ const routes = [
       path: '/article-page',
       name: 'article-page',
       component: ArticlePage,
+      beforeEnter: guardRoute,
     },
     {
       path: '*',

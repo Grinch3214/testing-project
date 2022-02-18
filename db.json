@@ -8,7 +8,7 @@
       "phone": "0700128216",
       "birthday": "18/10/1992",
       "gender": "male",
-      "logIn": "yaroslav123",
+      "login": "yaroslav123",
       "password": "yaroslav123456"
     },
     {
@@ -19,7 +19,7 @@
       "phone": "0990456345",
       "birthday": "10/03/1990",
       "gender": "female",
-      "logIn": "alina123",
+      "login": "alina123",
       "password": "alina123456"
     },
     {
@@ -30,7 +30,7 @@
       "phone": "0950126343",
       "birthday": "14/07/1995",
       "gender": "male",
-      "logIn": "nikita123",
+      "login": "nikita123",
       "password": "nikita123456"
     },
     {
@@ -41,7 +41,7 @@
       "phone": "0930128249",
       "birthday": "23/01/2003",
       "gender": "female",
-      "logIn": "veronica123",
+      "login": "veronica123",
       "password": "veronica123456"
     },
     {
@@ -52,9 +52,30 @@
       "phone": "0661823227",
       "birthday": "05/12/1998",
       "gender": "male",
-      "logIn": "artem98",
+      "login": "artem98",
       "password": "qwerty123456"
-      
+    },
+    {
+      "login": "yaroslav23",
+      "password": "12345678",
+      "name": "Max",
+      "surname": "Smith",
+      "email": "This.mail@mail.com",
+      "phone": "0937271443",
+      "birthday": "2022-02-03",
+      "select": "Male",
+      "id": 6
+    },
+    {
+      "login": "max",
+      "password": "12345678",
+      "name": "Max",
+      "surname": "Max",
+      "email": "yopta@mail.eu",
+      "phone": "00099887766",
+      "birthday": "2022-02-08",
+      "select": "Male",
+      "id": 7
     }
   ],
   "posts": [
@@ -209,13 +230,17 @@
     "surname": "Hrichina",
     "email": "scorpiomax90@gmail.com",
     "phone": "+380937271443",
-    "gitHubUserName": "Grinch3214",
+    "gitHubUserName": "https://github.com/Grinch3214",
     "telegramUserName": "@maxgrq",
     "linkedinLink": "https://www.linkedin.com/in/maxim-grichina-6000a91ab",
     "languages": [
       {
         "name": "English",
         "level": "Intermediate"
+      },
+      {
+        "name": "Ukrainian",
+        "level": "Native"
       },
       {
         "name": "Russian",
@@ -225,11 +250,19 @@
     "skils": [
       {
         "name": "HTML",
-        "level": "Intermediate"
+        "level": "Native"
+      },
+      {
+        "name": "CSS (SCSS, SASS)",
+        "level": "Native"
       },
       {
         "name": "JS",
-        "level": "Advanced"
+        "level": "Native"
+      },
+      {
+        "name": "Vue.js",
+        "level": "Native"
       }
     ]
   },

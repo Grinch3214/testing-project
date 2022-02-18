@@ -35,6 +35,17 @@
               @click:append="show = !show"
             ></v-text-field>
 
+            <v-alert
+            color="red"
+            icon="mdi-account"
+            type="warning"
+            dense
+            class="my-4 mx-auto"
+            max-width="300"
+            v-if="errorMsg"
+            v-html="errorMsg"
+          ></v-alert>
+
             <v-btn :disabled="!valid" color="blue accent-2" @click="onSubmit">
               Sign In
             </v-btn>
@@ -51,11 +62,17 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
+
 export default {
   name: "SignIn",
   data: () => ({
     valid: true,
     show: false,
+    errorMsg: '',
+
+    currentUser: null,
+    currentPassword: null,
 
     password: "",
     rules: {
@@ -72,16 +89,46 @@ export default {
   }),
 
   methods: {
-    onSubmit() {
-      if (this.$refs.form.validate()) {
-        const user = {
-          login: this.login,
-          password: this.password,
-        };
-        console.log(user);
+    ...mapActions( ['getUsers'] ),
+    async onSubmit() {
+      try {
+        if (this.$refs.form.validate()) {
+
+          for(let i = 0; i < this.users.length; i++) {
+            if (this.login === this.users[i].login) {
+              this.currentUser = this.users[i].login
+              if (this.password === this.users[i].password) {
+                this.currentPassword = this.users[i].password
+                break
+              }
+            }
+          }
+
+          if(!this.currentUser) {
+            this.errorMsg = 'Not existing login'
+            this.currentUser = null
+          } else if (!this.currentPassword) {
+            this.errorMsg = 'Wrong password. Try again!'
+            this.currentPassword = null
+          } else {
+            this.errorMsg = ''
+            localStorage.setItem('login', this.login)
+            console.log('OK')
+            this.$router.push('/')
+          }
+
+        }
+      } catch (e) {
+        console.warn('Error', e)
       }
     },
   },
+  computed: {
+    ...mapState(['users']),
+  },
+  created() {
+    this.getUsers()
+  }
 };
 </script>
 

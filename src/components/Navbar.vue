@@ -31,8 +31,8 @@
       <v-app-bar-nav-icon @click="openNav = true" color="white" class="d-flex d-md-none"></v-app-bar-nav-icon>
 
     <v-app-bar-title>
-        <router-link class="text-h5 d-block mt-2 white--text" style="max-width: 45px" to="/">
-          <img style="width: 100%" src="~@/assets/images/logo.svg" alt="">
+        <router-link class="text-h5 d-block white--text" to="/">
+          BLOG
         </router-link>
     </v-app-bar-title>
 
@@ -60,8 +60,8 @@
       </v-container>
     </v-main>
 
-    <v-footer app>
-      Created me
+    <v-footer app class="justify-center">
+      Created by me
     </v-footer>
   </div>
 </template>
